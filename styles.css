@@ -49,6 +49,14 @@ h1, h2 {
     text-align: center;
 }
 
+#welcome {
+    font-style: italic;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 2.5em;
+    color:forestgreen;
+}
+
  p {
     padding: 1.5em;
     text-align: justify;
