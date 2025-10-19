@@ -1,5 +1,5 @@
 
-//welcome greeting
+//welcome greeting-----
 
 const hours = new Date().getHours() // get the current hour
 const isMorning = hours >= 4 && hours < 12 // is it morning?
@@ -20,7 +20,7 @@ const welcome = document.querySelector('#welcome')
 welcome.textContent = greeting
 
 
-//secret message
+//secret message------
 const key = "It's a secret to everybody."
 const question = 'Why did the yogurt go to the art exhibition?'
 const answer = '- Because it was cultured.'
@@ -39,7 +39,7 @@ catch {
     console.log('Invalid json in local storage')
 }
 
-//carousel
+//carousel-----
 const urls = [
     'https://images.pexels.com/photos/1454360/pexels-photo-1454360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     'https://images.pexels.com/photos/933964/pexels-photo-933964.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -73,6 +73,43 @@ prev.addEventListener('click', () => prevImageSet())
 setInterval(() => nextImageSet(), 5000)
 
 showImages()
+
+//to-do list -----
+
+ const todoList = document.querySelector('.todo-list')
+ const input = document.querySelector('#new-todo')
+ const addBtn = document.querySelector('#btn-add')
+
+
+// Get the list from local storage
+const todos = JSON.parse(localStorage.getItem('.todo-list')) || []
+
+//Arrow function
+const renderTodos = () => {
+    // Clear the li's before we recreate them
+    todoList.innerHTML = ''
+
+    // Create and add new list items to the DOM
+    todos.forEach(todo=> {
+    const li = document.createElement('li')
+    li.textContent = todo.text
+    todoList.append(li)
+    })
+}
+
+//Load list when page is refreshed
+renderTodos();
+
+// Add a new item to the list
+addBtn.addEventListener('click', () =>{
+
+    todos.push({ text: input.value, completed: false })
+
+    // Save the list to local storage
+    localStorage.setItem('.todo-list', JSON.stringify(todos))
+    renderTodos();
+})
+
 
 
 

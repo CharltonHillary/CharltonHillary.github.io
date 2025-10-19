@@ -101,3 +101,9 @@ footer {
     gap: 10px;
     margin-top: 10px;
 }
+
+#todo-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
