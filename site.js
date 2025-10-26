@@ -100,6 +100,7 @@ const renderTodos = () => {
 //Load list when page is refreshed
 renderTodos();
 
+
 // Add a new item to the list
 addBtn.addEventListener('click', () =>{
 
@@ -108,11 +109,45 @@ addBtn.addEventListener('click', () =>{
     // Save the list to local storage
     localStorage.setItem('.todo-list', JSON.stringify(todos))
     renderTodos();
+
 })
 
+//pokemon API Fetch
 
 
+    const getRandomPokemon = async ()=> {
+    const url = 'https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 150)
 
+    try{
+
+    const response = await fetch(url)
+    const pokemon = await response.json()
+    return pokemon;
+
+        }catch(error){
+            console.log(error)
+        }
+
+    }
+
+
+const renderPokemon = (pokemon) => {
+const parentElement = document.getElementById('sprite')
+
+const img = document.createElement('img')
+img.src = pokemon.sprites.front_default;
+img.alt = pokemon.name;
+parentElement.append(img)
+}
+
+ (async () => {    
+    const randomPokemon = await getRandomPokemon();
+     if (randomPokemon)
+        {
+            renderPokemon(randomPokemon)
+        }
+  
+})() 
 
 
 
